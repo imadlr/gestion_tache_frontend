@@ -1,0 +1,22 @@
+.login {
+  height: 100vh;
+  background: #c0c0c0;
+}
+
+.login .content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 767px) {
+  .login .content {
+    width: 90% !important;
+  }
+}
+
+.login form input {
+  border: none;
+  border-bottom: 2px solid #2196f3;
+  outline: none;
+}

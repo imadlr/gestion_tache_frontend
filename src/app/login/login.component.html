@@ -1,0 +1,31 @@
+<div class="login position-relative">
+  <div
+    class="content w-50 p-3 rounded-3 position-absolute"
+    style="background-color: #eee"
+  >
+    <form [formGroup]="loginForm" (ngSubmit)="handleLogin()" method="post" id="signin">
+      <div class="mb-4">
+        <input
+          formControlName="username"
+          type="text"
+          class="d-block w-100 px-3 py-2"
+          aria-describedby="emailHelp"
+          placeholder="Nom d'utilisateur"
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          formControlName="password"
+          type="password"
+          class="d-block w-100 px-3 py-2"
+          placeholder="Mot de passe"
+        />
+      </div>
+      <div class="text-center">
+        <button type="submit" class="px-5 btn btn-primary">
+          Se connecter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

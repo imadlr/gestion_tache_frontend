@@ -1,1 +1,386 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --green-color: #0abf53;
+  --alt-green-color: #0cdc5f;
+  --yellow-color: #ffc400;
+  --section-color: #eff7fa;
+  --blue-color: #0075ff;
+  --orange-color: #f59e0b;
+  --red-color: #f44336;
+  --grey-color: #888;
+  --main-transition: 0.3s;
+}
+
+/* start color */
+.bg-section {
+  background-color: var(--section-color);
+}
+
+.bg-dark {
+  background-color: #1d2a4d !important;
+}
+
+.bg-eee {
+  background-color: #eee;
+}
+
+.bg-blue {
+  background-color: var(--blue-color);
+}
+
+.bg-green {
+  background-color: var(--green-color);
+}
+
+.bg-orange {
+  background-color: var(--orange-color);
+}
+
+.bg-red {
+  background-color: var(--red-color);
+}
+
+.bg-grey {
+  background-color: var(--grey-color);
+}
+
+.c-white {
+  color: white;
+}
+
+.c-black {
+  color: black;
+}
+
+.c-orange {
+  color: var(--orange-color);
+}
+
+.c-green {
+  color: var(--green-color);
+}
+
+.c-grey {
+  color: var(--grey-color);
+}
+
+.c-blue {
+  color: var(--blue-color);
+}
+
+.c-red {
+  color: var(--red-color);
+}
+
+.c-primary {
+  color: #13c5dd !important;
+}
+
+.c-yellow {
+  color: var(--yellow-color);
+}
+
+/* end color */
+/* start border */
+.b-none {
+  border: none;
+}
+
+.rad-10 {
+  border-radius: 10px;
+}
+
+.rad-6 {
+  border-radius: 6px;
+}
+
+.rad-half {
+  border-radius: 50%;
+}
+
+/* end border */
+/* start media */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .txt-c-mobile {
+    text-align: center;
+  }
+
+  .block-mobile {
+    display: block;
+  }
+}
+
+/* end media */
+/* start navbar */
+.navbar {
+  background-color: #fff;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: black;
+  transition: 0.3s;
+}
+
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link:focus,
+.navbar .navbar-nav .nav-link:hover {
+  color: #13c5dd;
+}
+
+.navbar .navbar-toggler {
+  color: black;
+  font-size: 25px;
+  border-color: white;
+}
+
+.navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar .navbar-toggler:focus[aria-expanded="true"] {
+  border-color: var(--green-color);
+}
+
+/* end navbar */
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* start sidebar */
+.sidebar {
+  width: 250px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+@media (min-width: 768px) {
+  .sidebar > h3::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: white;
+  }
+
+  .sidebar > h3::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    bottom: -19px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 4px solid white;
+    z-index: 2;
+  }
+}
+
+.sidebar ul li a {
+  transition: 0.3s;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background-color: #f6f6f6;
+  color: black;
+}
+
+.sidebar ul li a span {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    width: 80px;
+    padding: 8px;
+  }
+
+  .sidebar > h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+}
+
+/* end sidebar */
+/* start content */
+.content {
+  overflow: hidden;
+}
+
+/* end login page */
+.page h1::before,
+.page h1::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  bottom: -10px;
+  left: 0;
+}
+
+.page h1::before {
+  background-color: white;
+  width: 140px;
+}
+
+.page h1::after {
+  background-color: black;
+  width: 60px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+/* end content */
+/* start table */
+.struct .responsive-table {
+  overflow-x: auto;
+}
+
+.struct table {
+  min-width: 950px;
+}
+
+.struct table.horaire {
+  min-width: 800px;
+}
+
+.struct table td {
+  padding: 10px;
+  font-size: 14px;
+  transition: var(--main-transition);
+}
+
+.struct table thead td {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+.struct table tbody td {
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
+}
+
+.struct table tbody td:last-child {
+  border-right: 1px solid #eee;
+}
+
+.struct table .label {
+  padding: 3px 10px;
+  border-radius: 13px;
+}
+
+.struct table tbody tr:hover td {
+  background-color: #faf7f7;
+}
+
+.struct table tbody td img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* end table */
+/* start new task */
+.new-task {
+  min-height: 100vh;
+  background: #c0c0c0;
+}
+
+.new-task form label {
+  font-size: 14px;
+}
+
+@media (max-width: 576px) {
+  .new-task .content {
+    width: 90% !important;
+  }
+}
+
+/* end new task */
+/* start search */
+@media (max-width: 442px) {
+  .search input {
+    margin-bottom: 5px;
+  }
+}
+
+.search input {
+  border: 1px solid #ccc;
+  margin-left: 5px;
+  width: 250px;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.search input::placeholder {
+  font-size: 14px;
+}
+
+.search input:focus::placeholder {
+  opacity: 0;
+}
+
+/* end search */
+/* start active page */
+.pageActive {
+  background-color: var(--grey-color);
+  color: white;
+}
+
+/* end active page */
+/* start tickets */
+.statistics .box {
+  border: 1px solid #ccc;
+  width: calc(50% - 10px);
+}
+
+@media (max-width: 767px) {
+  .statistics .box {
+    width: 100%;
+  }
+}
+
+/* end tickets */
+.error {
+  color: red;
+  font-size: 13px;
+}

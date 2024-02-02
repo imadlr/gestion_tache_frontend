@@ -1,0 +1,106 @@
+<div style="height: 100vh" class="page d-flex">
+  <div class="sidebar bg-dark p-3 position-relative">
+    <h3 class="position-relative c-white text-center mt-0 mb-5">
+      Division
+    </h3>
+    <ul>
+      <li>
+        <a class="active d-flex align-items-center fs-5 p-2 mb-2" href="/division/"
+        ><i class="fa-solid fa-house fa-fw"></i>
+          <span class="d-none d-md-inline-block">Accueil</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="d-flex align-items-center fs-5 p-2 mb-2"
+        ><i class="fa-solid fa-bars-progress fa-fw"></i>
+          <span class="d-none d-md-inline-block">Tâches en cours</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="d-flex align-items-center fs-5 p-2 mb-2"
+        ><i class="fa-solid fa-circle-check fa-fw"></i>
+          <span class="d-none d-md-inline-block">Tâches complètes</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="d-flex align-items-center fs-5 p-2 mb-2"
+        >
+          <i class="fa-solid fa-xmark fa-fw"></i>
+          <span class="d-none d-md-inline-block">Tâches en retard</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="content bg-section w-100">
+    <!-- start head -->
+    <div
+      class="head bg-white p-3 d-flex align-items-center justify-content-end"
+    >
+      <div class="icons d-flex align-items-center">
+        <ul class="navbar-nav ms-3 mb-lg-0">
+          <li class="nav-item dropdown">
+                <span
+                >{{division.firstName + " "+ division.lastName}}</span
+                >
+            <span>
+                  <a class="dropdown-item" href="/logout"
+                  ><i class="fa-solid fa-arrow-right-from-bracket"></i
+                  ></a>
+                </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end head -->
+    <h1 class="position-relative ms-3 mt-2 mb-4">Tâches complètes</h1>
+    <!-- start struct  -->
+    <div class="struct p-3 bg-white rad-10 m-3">
+      <div class="search position-relative mb-3 col-md-9">
+        <form method="get" action="/division/searchTask">
+          <input type="text" name="mc" placeholder="recherche par nom"/>
+          <input type="hidden" name="id"/>
+          <button class="btn btn-primary" type="submit">rechercher</button>
+        </form>
+      </div>
+      <div class="responsive-table">
+        <table>
+          <thead>
+          <tr>
+            <td>Nom</td>
+            <td>Début</td>
+            <td>Fin</td>
+            <td>Description</td>
+            <td>État</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td
+
+            ></td>
+            <td
+
+            ></td>
+            <td></td>
+            <td class="fw-bold c-green"></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="mt-2">
+          <ul class="pagination">
+            <li class="page-item">
+              <a
+
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end struct  -->
+  </div>
+</div>
