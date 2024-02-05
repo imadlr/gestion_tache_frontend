@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
   loginForm !: FormGroup;
+  errorMessage: string | undefined;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthenticationService,
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.authService.loadUserAccount(resp.token);
       this.navigateTo();
     }, (err) => {
-      console.log(err.error.messgae)
+      this.errorMessage = err;
     })
   }
 

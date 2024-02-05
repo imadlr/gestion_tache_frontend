@@ -3,6 +3,9 @@
     class="content w-50 p-3 rounded-3 position-absolute"
     style="background-color: #eee"
   >
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{errorMessage}}
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="handleLogin()" method="post" id="signin">
       <div class="mb-4">
         <input

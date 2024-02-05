@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../services/authentication.service";
-import {catchError, throwError} from "rxjs";
 
 @Component({
   selector: 'app-division',
@@ -18,19 +17,13 @@ export class DivisionComponent implements OnInit {
     this.loadProfile();
   }
 
-  loadProfile() {
-    this.division = this.authService.loadUser()?.pipe(
-      catchError(err => {
-        console.log(err.error.message)
-        return throwError(err);
-      })
-    )
 
-    /*this.authService.loadUser()?.subscribe((resp: any) => {
-      this.division = resp.divisionDTO;
-    }, (err) => {
-      console.log(err.error.message())
-    })*/
+  loadProfile() {
+    this.authService.loadUser()?.subscribe(data => {
+      this.division = data
+    }, err => {
+      console.log(err.error.message)
+    })
   }
 
 }

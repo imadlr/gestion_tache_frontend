@@ -24,17 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request).pipe(
-      catchError((err) => {
-        if (err instanceof HttpErrorResponse) {
-          console.log(err.url);
-          if (err.status === 401 || err.status === 401) {
-            if (this.router.url === '/') {
-            } else {
-              localStorage.removeItem('token');
-              this.router.navigate(['/']);
-            }
-          }
-        }
+      catchError((err: HttpErrorResponse) => {
         return throwError(err);
       })
     );
