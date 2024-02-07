@@ -6,12 +6,11 @@ import {
   HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
-import {Router} from "@angular/router";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {

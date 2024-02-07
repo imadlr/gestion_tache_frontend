@@ -1,0 +1,22 @@
+<h1 class="position-relative ms-3 mt-2 mb-4">Accueil</h1>
+<div class="wrapper gap-3">
+  <!-- start welcome -->
+  <div class="welcome bg-white rounded">
+    <div
+      class="intro p-3 d-flex justify-content-berween align-items-center bg-eee"
+    >
+      <div>
+        <h2 class="m-0">Bienvenue</h2>
+        <p class="c-grey mt-3">{{division.lastName}}</p>
+      </div>
+    </div>
+    <div class="body text-center d-flex p-3 mt-3 mb-3">
+      <div>
+       {{division.firstName + " " + division.lastName}}
+        <span class="d-block c-grey fs-6 mt-2"
+        >Chef de la division : <b>{{division.nameDivision}}</b></span
+        >
+      </div>
+    </div>
+  </div>
+</div>

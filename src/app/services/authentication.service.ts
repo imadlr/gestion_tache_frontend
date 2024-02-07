@@ -43,10 +43,9 @@ export class AuthenticationService {
 
   loadUser() {
     this.loadFromStorage();
-    if (this.role === 'DIVISION') {
+    // if (this.role === 'DIVISION')
       return this.http.get(this.url + "/division/getByUsername?username=" + this.username);
-    }
-    return null;
+
   }
 
   public isAuthenticated() {
@@ -57,6 +56,10 @@ export class AuthenticationService {
     } else {
       return true;
     }
+  }
+
+  logout() {
+    this.removeFromLocalStorage();
   }
 
   private saveToStorage() {
@@ -71,6 +74,16 @@ export class AuthenticationService {
       this.username = storedUsername;
       this.role = storedRole;
     }
+  }
+
+  private removeFromLocalStorage() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    localStorage.removeItem('home');
+    localStorage.removeItem('current');
+    localStorage.removeItem('completed');
+    localStorage.removeItem('late');
   }
 
 }

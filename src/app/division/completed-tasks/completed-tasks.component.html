@@ -1,0 +1,32 @@
+<h1 class="position-relative ms-3 mt-2 mb-4">Tâches en cours</h1>
+<!-- start struct  -->
+<div class="struct p-3 bg-white rad-10 m-3">
+  <div class="search position-relative mb-3 col-md-9">
+    <input type="text" [(ngModel)]="keyword" placeholder="recherche par nom"/>
+    <button class="btn btn-primary" (click)="getCompletedTasks()">rechercher</button>
+  </div>
+  <div class="responsive-table">
+    <table>
+      <thead>
+      <tr>
+        <td>Nom</td>
+        <td>Début</td>
+        <td>Fin</td>
+        <td>Description</td>
+        <td>État</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks| paginate: { itemsPerPage: 15, currentPage: p }">
+        <td>{{task.object}}</td>
+        <td>{{task.startDate}}</td>
+        <td>{{task.endDate}}</td>
+        <td>{{task.description}}</td>
+        <td class="fw-bold c-green">{{task.state}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <span style="display:block; margin: 10px 0"></span>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

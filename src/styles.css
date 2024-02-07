@@ -80,6 +80,10 @@
   color: var(--yellow-color);
 }
 
+a {
+  cursor: pointer;
+}
+
 /* end color */
 /* start border */
 .b-none {
