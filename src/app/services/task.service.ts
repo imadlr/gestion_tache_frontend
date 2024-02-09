@@ -34,4 +34,12 @@ export class TaskService {
     });
   }
 
+  getCurrentTasks(keyword: string) {
+    return this.http.get(this.url + "/resp/currentTasks?keyword=" + keyword);
+  }
+
+  getStatistics() {
+    return this.http.get(this.url+"/resp/countByState")
+  }
+
 }

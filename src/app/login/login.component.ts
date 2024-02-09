@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit {
     if(this.authService.role === 'DIVISION') {
       this.router.navigate(['/division'])
     }
+    if(this.authService.role === 'RESPONSIBLE') {
+      this.router.navigate(['/responsible'])
+    }
   }
 
 }

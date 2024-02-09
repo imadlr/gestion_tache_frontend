@@ -14,6 +14,8 @@ import {NgxPaginationModule} from "ngx-pagination";
 import { CompletedTasksComponent } from './division/completed-tasks/completed-tasks.component';
 import { LateTasksComponent } from './division/late-tasks/late-tasks.component';
 import { ResponsibleComponent } from './responsible/responsible.component';
+import { CurrentTasksRespComponent } from './responsible/current-tasks-resp/current-tasks-resp.component';
+import { HomeRespComponent } from './responsible/home-resp/home-resp.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ResponsibleComponent } from './responsible/responsible.component';
     CurrentTasksComponent,
     CompletedTasksComponent,
     LateTasksComponent,
-    ResponsibleComponent
+    ResponsibleComponent,
+    CurrentTasksRespComponent,
+    HomeRespComponent
   ],
   imports: [
     BrowserModule,

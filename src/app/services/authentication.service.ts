@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {jwtDecode} from "jwt-decode";
 import {catchError, throwError} from "rxjs";
+import {SharedService} from "./shared.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthenticationService {
   username!: string;
 
   constructor(private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private sharedService:SharedService) {
   }
 
   public login(data: any) {
@@ -43,9 +45,15 @@ export class AuthenticationService {
 
   loadUser() {
     this.loadFromStorage();
-    // if (this.role === 'DIVISION')
+    if (this.role === 'DIVISION') {
       return this.http.get(this.url + "/division/getByUsername?username=" + this.username);
-
+    } else if (this.role === 'RESPONSIBLE') {
+      return this.http.get(this.url + "/resp/getByUsername?username=" + this.username);
+    } else if (this.role === 'ADMIN') {
+      return this.http.get(this.url + "/admin/getByUsername?username=" + this.username);
+    } else {
+      return this.http.get(this.url + "/sec/getByUsername?username=" + this.username);
+    }
   }
 
   public isAuthenticated() {
@@ -59,31 +67,28 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.removeFromLocalStorage();
+    this.removeFromStorage();
+    this.router.navigate(['/']);
   }
 
   private saveToStorage() {
-    localStorage.setItem('username', this.username);
-    localStorage.setItem('role', this.role);
+    this.sharedService.saveToStorage('username',this.username)
+    this.sharedService.saveToStorage('role',this.role)
   }
 
   private loadFromStorage() {
-    const storedUsername = localStorage.getItem('username');
-    const storedRole = localStorage.getItem('role');
-    if (storedUsername && storedRole) {
-      this.username = storedUsername;
-      this.role = storedRole;
-    }
+      this.username = this.sharedService.loadFromStorage('username');
+      this.role = this.sharedService.loadFromStorage('role');
   }
 
-  private removeFromLocalStorage() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('role');
-    localStorage.removeItem('home');
-    localStorage.removeItem('current');
-    localStorage.removeItem('completed');
-    localStorage.removeItem('late');
+  private removeFromStorage() {
+    this.sharedService.removeFromStorage('token');
+    this.sharedService.removeFromStorage('username');
+    this.sharedService.removeFromStorage('role');
+    this.sharedService.removeFromStorage('home');
+    this.sharedService.removeFromStorage('current');
+    this.sharedService.removeFromStorage('completed');
+    this.sharedService.removeFromStorage('late');
   }
 
 }

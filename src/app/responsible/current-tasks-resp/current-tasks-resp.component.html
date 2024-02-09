@@ -1,0 +1,34 @@
+<h1 class="position-relative ms-3 mt-2 mb-4">Tâches complètes</h1>
+<div class="struct p-3 bg-white rad-10 m-3">
+  <div class="search position-relative mb-3 col-md-9">
+    <input type="text" placeholder="recherche par nom"/>
+    <button class="btn btn-primary">rechercher</button>
+  </div>
+
+  <div class="responsive-table">
+    <table>
+      <thead>
+      <tr>
+        <td>Nom</td>
+        <td>Division</td>
+        <td>Début</td>
+        <td>Fin</td>
+        <td>Description</td>
+        <td>Etat</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks| paginate: { itemsPerPage: 15, currentPage: p }">
+        <td>{{task.object}}</td>
+        <td>{{task.divisionId}}</td>
+        <td>{{task.startDate}}</td>
+        <td>{{task.endDate}}</td>
+        <td>{{task.description}}</td>
+        <td class="fw-bold c-orange">{{task.state}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div style="margin: 6px 0"></div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

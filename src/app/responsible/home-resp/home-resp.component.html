@@ -1,0 +1,43 @@
+<h1 class="position-relative ms-3 mt-2 mb-4">Accueil</h1>
+<div class="wrapper gap-3">
+  <div class="welcome bg-white rounded">
+    <div
+      class="intro p-3 d-flex justify-content-berween align-items-center bg-eee"
+    >
+      <div>
+        <h2 class="m-0">Bienvenue</h2>
+        <p class="c-grey mt-3">{{responsible.lastName}}</p>
+      </div>
+    </div>
+    <div class="body text-center d-flex p-3 mt-3 mb-3">
+      <div>
+        {{responsible.lastName + " " + responsible.firstName}}
+        <span class="d-block c-grey fs-6 mt-2">Responsable</span>
+      </div>
+    </div>
+  </div>
+  <!-- end welcome -->
+  <!-- start statistiques -->
+  <div class="statistics p-3 bg-white rounded">
+    <h2 class="mt-0 mb-4">Statistiques</h2>
+    <div class="d-flex text-center gap-3 flex-wrap">
+      <div *ngFor="let stats of statistics" class="box p-2 rad-10 fs-6 c-grey">
+        <span class="d-block c-black fw-bold fs-5 mb-4">{{stats.count}}</span>
+        <p *ngIf="stats.state as stateValue">
+          {{ stateValue === 'EN_ATTENTE' ? 'Tâches en cours' :
+          stateValue === 'TERMINEE' ? 'Tâches complètes' :
+            'Tâches en retard'  }}
+        </p>
+      </div>
+      <div class="box p-2 rad-10 fs-6 c-grey">
+                <span class="d-block c-black fw-bold fs-5 mb-4"
+                >
+                    {{getTotalCount()}}
+                </span
+                >
+        Total des tâches
+      </div>
+    </div>
+  </div>
+  <!-- end statistiques -->
+</div>

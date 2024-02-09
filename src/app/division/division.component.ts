@@ -23,8 +23,8 @@ export class DivisionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('home') !== null) {
-      this.loadFromLocalStorage()
+    if (this.sharedService.loadFromStorage('home') !== null) {
+      this.loadFromStorage()
     }
     this.loadDivision()
   }
@@ -42,7 +42,7 @@ export class DivisionComponent implements OnInit {
     this.showCurrentTasks = false;
     this.showCompletedTasks = false;
     this.showLateTasks = false;
-    this.saveToLocalStorage();
+    this.saveToStorage();
   }
 
   onShowLateTasks() {
@@ -50,7 +50,7 @@ export class DivisionComponent implements OnInit {
     this.showCurrentTasks = false;
     this.showCompletedTasks = false;
     this.showLateTasks = true;
-    this.saveToLocalStorage();
+    this.saveToStorage();
   }
 
   onShowCompletedTasks() {
@@ -58,7 +58,7 @@ export class DivisionComponent implements OnInit {
     this.showCurrentTasks = false;
     this.showCompletedTasks = true;
     this.showLateTasks = false;
-    this.saveToLocalStorage();
+    this.saveToStorage();
   }
 
   onShowCurrentTasks() {
@@ -66,33 +66,31 @@ export class DivisionComponent implements OnInit {
     this.showCurrentTasks = true;
     this.showCompletedTasks = false;
     this.showLateTasks = false;
-    this.saveToLocalStorage();
+    this.saveToStorage();
   }
 
   handleLogout() {
     this.authService.logout();
-    this.router.navigate(['/'])
   }
 
-  private loadFromLocalStorage() {
-    this.showHome = this.stringToBoolean(localStorage.getItem('home'));
-    this.showCurrentTasks = this.stringToBoolean(localStorage.getItem('current'));
-    this.showCompletedTasks = this.stringToBoolean(localStorage.getItem('completed'));
-    this.showLateTasks = this.stringToBoolean(localStorage.getItem('late'));
-  }
 
-  private saveToLocalStorage() {
-    this.sharedService.saveToStorage(this.showHome.toString(), this.showCurrentTasks.toString(),
+  private saveToStorage() {
+    this.sharedService.saveAllToStorage(this.showHome.toString(), this.showCurrentTasks.toString(),
       this.showCompletedTasks.toString(), this.showLateTasks.toString())
   }
 
-  private stringToBoolean(value: any): boolean {
+  private loadFromStorage() {
+    this.showHome = this.stringToBoolean(this.sharedService.loadFromStorage('home'));
+    this.showCurrentTasks = this.stringToBoolean(this.sharedService.loadFromStorage('current'));
+    this.showCompletedTasks = this.stringToBoolean(this.sharedService.loadFromStorage('completed'));
+    this.showLateTasks = this.stringToBoolean(this.sharedService.loadFromStorage('late'));
+  }
+
+  private stringToBoolean(value: string): any {
     switch (value.toLowerCase()) {
       case 'true':
         return true;
       case 'false':
-        return false;
-      default:
         return false;
     }
   }

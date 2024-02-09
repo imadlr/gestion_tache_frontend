@@ -1,7 +1,7 @@
-enum TaskState {
-  TERMINEE,
-  EN_ATTENTE,
-  EN_RETARD
+export enum TaskState {
+  TERMINEE='TERMINEE',
+  EN_ATTENTE='EN_ATTENTE',
+  EN_RETARD='EN_RETARD'
 }
 
 export interface TaskDTO {
