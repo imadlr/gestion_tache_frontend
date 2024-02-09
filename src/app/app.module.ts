@@ -16,6 +16,7 @@ import { LateTasksComponent } from './division/late-tasks/late-tasks.component';
 import { ResponsibleComponent } from './responsible/responsible.component';
 import { CurrentTasksRespComponent } from './responsible/current-tasks-resp/current-tasks-resp.component';
 import { HomeRespComponent } from './responsible/home-resp/home-resp.component';
+import { AgendaComponent } from './responsible/agenda/agenda.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeRespComponent } from './responsible/home-resp/home-resp.component';
     LateTasksComponent,
     ResponsibleComponent,
     CurrentTasksRespComponent,
-    HomeRespComponent
+    HomeRespComponent,
+    AgendaComponent
   ],
   imports: [
     BrowserModule,
