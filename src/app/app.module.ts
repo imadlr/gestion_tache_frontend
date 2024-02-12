@@ -17,6 +17,9 @@ import { ResponsibleComponent } from './responsible/responsible.component';
 import { CurrentTasksRespComponent } from './responsible/current-tasks-resp/current-tasks-resp.component';
 import { HomeRespComponent } from './responsible/home-resp/home-resp.component';
 import { AgendaComponent } from './responsible/agenda/agenda.component';
+import { CompletedTasksRespComponent } from './responsible/completed-tasks-resp/completed-tasks-resp.component';
+import { OrderByDatePipe } from './pipes/order-by-date.pipe';
+import { LateTasksRespComponent } from './responsible/late-tasks-resp/late-tasks-resp.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { AgendaComponent } from './responsible/agenda/agenda.component';
     ResponsibleComponent,
     CurrentTasksRespComponent,
     HomeRespComponent,
-    AgendaComponent
+    AgendaComponent,
+    CompletedTasksRespComponent,
+    OrderByDatePipe,
+    LateTasksRespComponent
   ],
   imports: [
     BrowserModule,

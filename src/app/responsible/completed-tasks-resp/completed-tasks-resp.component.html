@@ -21,10 +21,10 @@
       <tr *ngFor="let task of tasks | orderByDate:'startDate':'desc' | paginate: { itemsPerPage: 15, currentPage: p }">
         <td>{{task.object}}</td>
         <td>{{task.divisionId}}</td>
-        <td>{{task.startDate | date : 'longDate' }}</td>
-        <td>{{task.endDate | date : 'longDate' }}</td>
+        <td>{{task.startDate | date : 'longDate'}}</td>
+        <td>{{task.endDate | date : 'longDate'}}</td>
         <td>{{task.description}}</td>
-        <td class="fw-bold c-orange">{{task.state}}</td>
+        <td class="fw-bold c-green">{{task.state}}</td>
       </tr>
       </tbody>
     </table>

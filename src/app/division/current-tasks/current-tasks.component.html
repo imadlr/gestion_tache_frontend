@@ -2,8 +2,8 @@
 <!-- start struct  -->
 <div class="struct p-3 bg-white rad-10 m-3">
   <div class="search position-relative mb-3 col-md-9">
-      <input type="text" [(ngModel)]="keyword" placeholder="recherche par nom"/>
-      <button class="btn btn-primary" (click)="getCurrentTasks()">rechercher</button>
+    <input type="text" [(ngModel)]="keyword" placeholder="recherche par nom"/>
+    <button class="btn btn-primary" (click)="getCurrentTasks()">rechercher</button>
   </div>
   <div class="responsive-table">
     <table>
@@ -18,10 +18,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let task of tasks| paginate: { itemsPerPage: 15, currentPage: p }">
+      <tr *ngFor="let task of tasks | orderByDate:'startDate':'desc' | paginate: { itemsPerPage: 15, currentPage: p }">
         <td>{{task.object}}</td>
-        <td>{{task.startDate}}</td>
-        <td>{{task.endDate}}</td>
+        <td>{{task.startDate | date : 'longDate' }}</td>
+        <td>{{task.endDate | date : 'longDate'}}</td>
         <td>{{task.description}}</td>
         <td class="fw-bold c-orange">{{task.state}}</td>
         <td class="text-center">

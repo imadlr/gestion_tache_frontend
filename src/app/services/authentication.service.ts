@@ -89,6 +89,7 @@ export class AuthenticationService {
     this.sharedService.removeFromStorage('current');
     this.sharedService.removeFromStorage('completed');
     this.sharedService.removeFromStorage('late');
+    this.sharedService.removeFromStorage('agenda');
   }
 
 }

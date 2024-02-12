@@ -75,8 +75,10 @@ export class DivisionComponent implements OnInit {
 
 
   private saveToStorage() {
-    this.sharedService.saveAllToStorage(this.showHome.toString(), this.showCurrentTasks.toString(),
-      this.showCompletedTasks.toString(), this.showLateTasks.toString())
+    localStorage.setItem('home', this.showHome.toString())
+    localStorage.setItem('current', this.showCurrentTasks.toString())
+    localStorage.setItem('completed', this.showCompletedTasks.toString())
+    localStorage.setItem('late', this.showLateTasks.toString())
   }
 
   private loadFromStorage() {

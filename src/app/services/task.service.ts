@@ -34,12 +34,20 @@ export class TaskService {
     });
   }
 
+  getStatistics() {
+    return this.http.get(this.url+"/resp/countByState")
+  }
+
   getCurrentTasks(keyword: string) {
     return this.http.get(this.url + "/resp/currentTasks?keyword=" + keyword);
   }
 
-  getStatistics() {
-    return this.http.get(this.url+"/resp/countByState")
+  getCompletedTasks(keyword: string) {
+    return this.http.get(this.url + "/resp/completedTasks?keyword=" + keyword);
+  }
+
+  getLateTasks(keyword: string) {
+    return this.http.get(this.url + "/resp/lateTasks?keyword=" + keyword);
   }
 
 }

@@ -16,6 +16,8 @@
       <li>
         <a
           class="d-flex align-items-center fs-5 p-2 mb-2"
+          [class.active]="showAgenda"
+          (click)="onShowAgenda()"
         ><i class="fa-solid fa-calendar-days fa-fw"></i>
           <span class="d-none d-md-inline-block">Agenda</span>
         </a>
@@ -74,5 +76,8 @@
     </div>
     <app-home-resp *ngIf="showHome" [responsible]="responsible"></app-home-resp>
     <app-current-tasks-resp *ngIf="showCurrentTasks"></app-current-tasks-resp>
+    <app-completed-tasks-resp *ngIf="showCompletedTasks"></app-completed-tasks-resp>
+    <app-late-tasks-resp *ngIf="showLateTasks"></app-late-tasks-resp>
+    <app-agenda [responsible]="responsible" *ngIf="showAgenda"></app-agenda>
   </div>
 </div>

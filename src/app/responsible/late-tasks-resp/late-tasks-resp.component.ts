@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskDTO} from "../../models/task";
 import {TaskService} from "../../services/task.service";
-import {take} from "rxjs";
 
 @Component({
-  selector: 'app-current-tasks-resp',
-  templateUrl: './current-tasks-resp.component.html',
-  styleUrls: ['./current-tasks-resp.component.css']
+  selector: 'app-late-tasks-resp',
+  templateUrl: './late-tasks-resp.component.html',
+  styleUrls: ['./late-tasks-resp.component.css']
 })
-export class CurrentTasksRespComponent implements OnInit {
+export class LateTasksRespComponent implements OnInit{
 
   tasks: TaskDTO[] = [];
   keyword: string = ''
@@ -18,11 +17,11 @@ export class CurrentTasksRespComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCurrentTasks();
+    this.getLateTasks();
   }
 
-  getCurrentTasks() {
-    this.taskService.getCurrentTasks(this.keyword).subscribe((data: any) => {
+  getLateTasks() {
+    this.taskService.getLateTasks(this.keyword).subscribe((data: any) => {
       this.tasks = data;
     }, (err) => {
       console.log(err)
@@ -30,7 +29,8 @@ export class CurrentTasksRespComponent implements OnInit {
   }
 
   search() {
-    this.getCurrentTasks();
+    this.getLateTasks();
   }
 
 }
+

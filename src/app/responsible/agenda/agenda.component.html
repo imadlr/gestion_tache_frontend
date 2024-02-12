@@ -1,1 +1,68 @@
-<p>agenda works!</p>
+<div class="struct p-3 bg-white rad-10 m-3">
+  <div class="row">
+    <div class="row col-md-4">
+      <form class="col-md-6 mb-3" [formGroup]="jourSearchForm">
+        <select
+          style="height: 35px"
+          class="w-100"
+          id="daySelect"
+          formControlName="jour"
+        >
+          <option selected hidden disabled>{{jour}}</option>
+          <option value="Lundi">lundi</option>
+          <option value="Mardi">mardi</option>
+          <option value="Mercredi">mercredi</option>
+          <option value="Jeudi">jeudi</option>
+          <option value="Vendredi">vendredi</option>
+          <option value="Samedi">samedi</option>
+          <option value="Dimanche">dimanche</option>
+        </select>
+      </form>
+      <div class="col-md-4">
+        <button class="btn btn-primary w-100" type="submit" (click)="searchByDay()">voir</button>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+    <div class="search mb-3 col-md-5">
+        <input type="date" [(ngModel)]="date"/>
+        <button class="btn btn-primary" (click)="searchByDate()">
+          rechercher
+        </button>
+    </div>
+  </div>
+  <div class="responsive-table">
+    <table>
+      <thead>
+      <tr>
+        <td>Objet</td>
+        <td>Date</td>
+        <td>Heure</td>
+        <td>Observation</td>
+        <td>Etat</td>
+        <td></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ag of agenda | orderByDate :'date' : 'asc' ">
+        <td>{{ag.object}}</td>
+        <td>{{ag.date | date : 'longDate' }}</td>
+        <td>{{ag.hour}}</td>
+        <td>{{ag.observation}}</td>
+        <td class="fw-bold" [ngClass]="ag.state == 'TERMINEE' ? 'c-green' : 'c-orange'">{{ag.state}}</td>
+        <td class="text-center">
+                    <span
+                      *ngIf="ag.state == 'EN_ATTENTE'"
+                      class="label bg-green me-2"
+                      (click)="finishAgenda(ag.id)"
+                    ><a
+                      class="c-white"
+                      title="terminer"
+                    ><i class="fa-solid fa-check fa-fw"></i></a
+                    ></span>
+          <span *ngIf="ag.state == 'TERMINEE'">---</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

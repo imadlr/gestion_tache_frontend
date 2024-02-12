@@ -15,6 +15,7 @@ export class ResponsibleComponent implements OnInit {
   showCurrentTasks: boolean = false;
   showCompletedTasks: boolean = false;
   showLateTasks: boolean = false;
+  showAgenda: boolean = false;
 
 
   constructor(private authService: AuthenticationService,
@@ -22,7 +23,7 @@ export class ResponsibleComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.sharedService.loadFromStorage('home') !== null) {
+    if (this.sharedService.loadFromStorage('home') != null) {
       this.loadFromStorage()
     }
     this.loadResponsible();
@@ -41,6 +42,7 @@ export class ResponsibleComponent implements OnInit {
     this.showCurrentTasks = false;
     this.showCompletedTasks = false;
     this.showLateTasks = false;
+    this.showAgenda = false;
     this.saveToStorage();
   }
 
@@ -49,6 +51,7 @@ export class ResponsibleComponent implements OnInit {
     this.showCurrentTasks = false;
     this.showCompletedTasks = false;
     this.showLateTasks = true;
+    this.showAgenda = false;
     this.saveToStorage();
   }
 
@@ -57,6 +60,7 @@ export class ResponsibleComponent implements OnInit {
     this.showCurrentTasks = false;
     this.showCompletedTasks = true;
     this.showLateTasks = false;
+    this.showAgenda = false;
     this.saveToStorage();
   }
 
@@ -65,6 +69,16 @@ export class ResponsibleComponent implements OnInit {
     this.showCurrentTasks = true;
     this.showCompletedTasks = false;
     this.showLateTasks = false;
+    this.showAgenda = false;
+    this.saveToStorage();
+  }
+
+  onShowAgenda() {
+    this.showHome = false;
+    this.showCurrentTasks = false;
+    this.showCompletedTasks = false;
+    this.showLateTasks = false;
+    this.showAgenda = true;
     this.saveToStorage();
   }
 
@@ -73,8 +87,11 @@ export class ResponsibleComponent implements OnInit {
   }
 
   private saveToStorage() {
-    this.sharedService.saveAllToStorage(this.showHome.toString(), this.showCurrentTasks.toString(),
-      this.showCompletedTasks.toString(), this.showLateTasks.toString())
+    localStorage.setItem('home', this.showHome.toString())
+    localStorage.setItem('current', this.showCurrentTasks.toString())
+    localStorage.setItem('completed', this.showCompletedTasks.toString())
+    localStorage.setItem('late', this.showLateTasks.toString())
+    localStorage.setItem('agenda', this.showAgenda.toString())
   }
 
   private loadFromStorage() {
@@ -82,6 +99,7 @@ export class ResponsibleComponent implements OnInit {
     this.showCurrentTasks = this.stringToBoolean(this.sharedService.loadFromStorage('current'));
     this.showCompletedTasks = this.stringToBoolean(this.sharedService.loadFromStorage('completed'));
     this.showLateTasks = this.stringToBoolean(this.sharedService.loadFromStorage('late'));
+    this.showAgenda = this.stringToBoolean(this.sharedService.loadFromStorage('agenda'));
   }
 
   private stringToBoolean(value: string): any {
