@@ -1,0 +1,63 @@
+<h1 class="position-relative ms-3 mt-2 mb-4">Tâches en cours</h1>
+<!-- start struct  -->
+<div class="struct p-3 bg-white rad-10 m-3">
+  <div class="row">
+    <div class="search position-relative mb-3 col-md-9">
+        <input type="text" placeholder="recherche par nom" [(ngModel)]="keyword" />
+        <button class="btn btn-primary" type="submit" (click)="handleSearch()">
+          rechercher
+        </button>
+    </div>
+    <div class="mb-3 col-md-3">
+      <a class="btn btn-primary" aria-current="page"
+         (click)="handleAddAction()"
+      >Ajouter une tâche</a
+      >
+    </div>
+  </div>
+
+  <div class="responsive-table">
+    <table>
+      <thead>
+      <tr>
+        <td>Nom</td>
+        <td>Division</td>
+        <td>Début</td>
+        <td>Fin</td>
+        <td>Description</td>
+        <td>Etat</td>
+        <td></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks | orderByDate:'startDate':'desc' | paginate: { itemsPerPage: 15, currentPage: p } ">
+        <td>{{task.object}}</td>
+        <td>{{task.divisionId}}</td>
+        <td>{{task.startDate}}</td>
+        <td>{{task.endDate}}</td>
+        <td>{{task.description}}</td>
+        <td class="fw-bold c-orange">{{task.state}}</td>
+        <td class="text-center">
+                    <span class="label bg-orange me-2"
+                    ><a
+                      class="c-white"
+                      title="modifier"
+
+                    ><i class="fa-solid fa-pen fa-fw"></i></a
+                    ></span>
+          <span class="label bg-red me-2"
+          ><a
+            class="c-white"
+            title="supprimer"
+            onclick="return confirm('Etes vous sure ?')"
+          ><i class="fa-solid fa-trash fa-fw"></i></a
+          ></span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div style="margin: 6px 0"></div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<!-- end struct  -->

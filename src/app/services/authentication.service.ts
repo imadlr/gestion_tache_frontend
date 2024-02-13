@@ -51,8 +51,10 @@ export class AuthenticationService {
       return this.http.get(this.url + "/resp/getByUsername?username=" + this.username);
     } else if (this.role === 'ADMIN') {
       return this.http.get(this.url + "/admin/getByUsername?username=" + this.username);
-    } else {
+    } else if  (this.role === 'SECRETARY') {
       return this.http.get(this.url + "/sec/getByUsername?username=" + this.username);
+    } else {
+      return null;
     }
   }
 

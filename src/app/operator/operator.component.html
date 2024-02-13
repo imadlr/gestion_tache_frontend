@@ -1,0 +1,68 @@
+<div style="height: 100vh" class="page d-flex">
+  <div class="sidebar bg-dark p-3 position-relative">
+    <h3 class="position-relative c-white text-center mt-0 mb-5">
+      Opérateur
+    </h3>
+    <ul>
+      <li>
+        <a
+          class="d-flex align-items-center fs-5 p-2 mb-2"
+          [class.active]="showCurrentTasks"
+          (click)="onShowCurrentTasks()"
+        ><i class="fa-solid fa-bars-progress fa-fw"></i>
+          <span class="d-none d-md-inline-block">Tâches en cours</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="d-flex align-items-center fs-5 p-2 mb-2"
+          [class.active]="showCompletedTasks"
+          (click)="onShowCompletedTasks()"
+        ><i class="fa-solid fa-circle-check fa-fw"></i>
+          <span class="d-none d-md-inline-block">Tâches complètes</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="d-flex align-items-center fs-5 p-2 mb-2"
+          [class.active]="showLateTasks"
+          (click)="onShowLateTasks()"
+        >
+          <i class="fa-solid fa-xmark fa-fw"></i>
+          <span class="d-none d-md-inline-block">Tâches en retard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="d-flex align-items-center fs-5 p-2 mb-2"
+          [class.active]="showAgenda"
+          (click)="onShowAgenda()"
+        ><i class="fa-solid fa-calendar-days fa-fw"></i>
+          <span class="d-none d-md-inline-block">Agenda</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="content bg-section w-100">
+    <!-- start head -->
+    <div
+      class="head bg-white p-3 d-flex align-items-center justify-content-end"
+    >
+      <div class="icons d-flex align-items-center">
+        <ul class="navbar-nav ms-3 mb-lg-0">
+          <li class="nav-item dropdown">
+                <span
+                >{{secretary.userAccountDTO.username}}</span
+                >
+            <span>
+                  <a class="dropdown-item" (click)="handleLogout()"
+                  ><i class="fa-solid fa-arrow-right-from-bracket"></i
+                  ></a>
+                </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <app-current-tasks-sec *ngIf="showCurrentTasks"></app-current-tasks-sec>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {LoginComponent} from "./login/login.component";
 import {DivisionComponent} from "./division/division.component";
 import {GuardService} from "./services/guard.service";
 import {ResponsibleComponent} from "./responsible/responsible.component";
+import {OperatorComponent} from "./operator/operator.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,13 @@ const routes: Routes = [
     canActivate: [GuardService],
     data: {
       ['expectedRoles']: ['RESPONSIBLE']
+    }
+  },
+  {
+    path: 'sec', component: OperatorComponent,
+    canActivate: [GuardService],
+    data: {
+      ['expectedRoles']: ['SECRETARY']
     }
   }
 ];

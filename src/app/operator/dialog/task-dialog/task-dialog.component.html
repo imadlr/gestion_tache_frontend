@@ -1,0 +1,58 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span>{{dialogData.action}} Product</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup] = "taskForm">
+    <div fxFlex fxLayout="column">
+      <div fxLayout="row wrap">
+        <mat-form-field fxFlex>
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="" required>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field fxFlex>
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price" required>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field fxFlex>
+          <mat-label>Category</mat-label>
+
+          <mat-select formControlName="categoryId">
+            <mat-option *ngFor="let division of divisions" [value]="division.id">
+              {{division.nameDivision}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field fxFlex>
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description" required>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()">
+    <mat-icon>save</mat-icon>
+  </button>
+  <button mat-raised-button color="warn" mat-dialog-close>
+    <mat-icon>cancel</mat-icon> Close
+  </button>
+</mat-dialog-actions>

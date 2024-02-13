@@ -11,4 +11,8 @@ export class DivisionService {
   constructor(private http: HttpClient) {
   }
 
+  getDivisions() {
+    return this.http.get(this.url+"/sec/divisions")
+  }
+
 }

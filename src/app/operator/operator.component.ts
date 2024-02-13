@@ -1,37 +1,36 @@
 import {Component, OnInit} from '@angular/core';
-import {ResponsibleDTO} from "../models/responsible";
+import {SecretaryDTO} from "../models/secretary";
 import {AuthenticationService} from "../services/authentication.service";
 import {SharedService} from "../services/shared.service";
 
 @Component({
-  selector: 'app-responsible',
-  templateUrl: './responsible.component.html',
-  styleUrls: ['./responsible.component.css']
+  selector: 'app-operator',
+  templateUrl: './operator.component.html',
+  styleUrls: ['./operator.component.css']
 })
-export class ResponsibleComponent implements OnInit {
+export class OperatorComponent implements OnInit {
 
-  responsible!: ResponsibleDTO;
+  secretary!: SecretaryDTO;
   showHome: boolean = true;
   showCurrentTasks: boolean = false;
   showCompletedTasks: boolean = false;
   showLateTasks: boolean = false;
   showAgenda: boolean = false;
 
-
   constructor(private authService: AuthenticationService,
               private sharedService: SharedService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.sharedService.loadFromStorage('home') != null) {
       this.loadFromStorage()
     }
-    this.loadResponsible();
+    this.loadSecretary();
   }
 
-  loadResponsible() {
+  loadSecretary() {
     this.authService.loadUser()?.subscribe((data: any) => {
-      this.responsible = data;
+      this.secretary = data;
     }, (err) => {
       console.log(err)
     })

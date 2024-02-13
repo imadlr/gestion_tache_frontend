@@ -20,6 +20,13 @@ import { AgendaComponent } from './responsible/agenda/agenda.component';
 import { CompletedTasksRespComponent } from './responsible/completed-tasks-resp/completed-tasks-resp.component';
 import { OrderByDatePipe } from './pipes/order-by-date.pipe';
 import { LateTasksRespComponent } from './responsible/late-tasks-resp/late-tasks-resp.component';
+import { OperatorComponent } from './operator/operator.component';
+import { CurrentTasksSecComponent } from './operator/current-tasks-sec/current-tasks-sec.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskDialogComponent } from './operator/dialog/task-dialog/task-dialog.component';
+import {MaterialModule} from "./material/material.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -36,7 +43,10 @@ import { LateTasksRespComponent } from './responsible/late-tasks-resp/late-tasks
     AgendaComponent,
     CompletedTasksRespComponent,
     OrderByDatePipe,
-    LateTasksRespComponent
+    LateTasksRespComponent,
+    OperatorComponent,
+    CurrentTasksSecComponent,
+    TaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +55,10 @@ import { LateTasksRespComponent } from './responsible/late-tasks-resp/late-tasks
     HttpClientModule,
     CommonModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [HttpClientModule, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
