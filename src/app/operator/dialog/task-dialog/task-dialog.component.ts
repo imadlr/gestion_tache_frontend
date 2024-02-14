@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DivisionDTO} from "../../../models/division";
 import {DivisionService} from "../../../services/division.service";
 import {TaskService} from "../../../services/task.service";
+import {TaskState} from "../../../models/task";
 
 @Component({
   selector: 'app-task-dialog',
@@ -37,7 +38,7 @@ export class TaskDialogComponent {
       divisionId: [null, [Validators.required]]
     });
 
-    if (this.dialogData.action === 'Modifier') {
+    if (this.dialogData.action == 'update') {
       this.dialogAction = 'Modifier';
       this.action = 'update';
       this.taskForm.patchValue(this.dialogData.data);
@@ -55,7 +56,7 @@ export class TaskDialogComponent {
   }
 
   handleSubmit() {
-    if (this.dialogAction === 'Modofier') {
+    if (this.action == 'update') {
       this.edit();
     } else {
       this.add();
@@ -83,5 +84,8 @@ export class TaskDialogComponent {
       console.log(err);
     });
   }
+
+  protected readonly TaskState = TaskState;
+  protected readonly Object = Object;
 
 }

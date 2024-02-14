@@ -1,4 +1,4 @@
-<div style="height: 100vh" class="page d-flex">
+<div class="page d-flex">
   <div class="sidebar bg-dark p-3 position-relative">
     <h3 class="position-relative c-white text-center mt-0 mb-5">
       Opérateur
@@ -64,5 +64,8 @@
       </div>
     </div>
     <app-current-tasks-sec *ngIf="showCurrentTasks"></app-current-tasks-sec>
+    <app-completed-tasks-sec *ngIf="showCompletedTasks"></app-completed-tasks-sec>
+    <app-late-tasks-sec *ngIf="showLateTasks"></app-late-tasks-sec>
+    <app-agenda-sec *ngIf="showAgenda"></app-agenda-sec>
   </div>
 </div>

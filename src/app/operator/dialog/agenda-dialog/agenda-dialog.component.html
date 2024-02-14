@@ -1,0 +1,60 @@
+<div
+  class="content p-3 rounded-3 "
+  style="background-color: #eee"
+>
+  <div class="text-end">
+    <button class="mat-dialog-close" color="warn" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <h3 class="text-center mb-2">{{dialogAction}} agenda</h3>
+  <form class="row gx-5" method="post" [formGroup]="agendaForm">
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Objet</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="object"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Date</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="date"
+      />
+    </div>
+    <div class="mb-3 col-6">
+      <label class="form-label">Heure</label>
+      <input
+        type="time"
+        class="form-control"
+        formControlName="hour"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >Observation</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="observation"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >State</label
+      >
+      <select style="height: 35px" class="w-100" formControlName="state">
+        <option *ngFor="let state of Object.values(AgendaState)" [value]="state">
+          {{state}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="handleSubmit()">Enregistrer</button>
+    </div>
+  </form>
+</div>

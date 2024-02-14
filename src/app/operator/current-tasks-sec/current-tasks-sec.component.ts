@@ -44,14 +44,39 @@ export class CurrentTasksSecComponent implements OnInit {
     dialogConfig.data = {
       action: 'add'
     };
-    dialogConfig.width = '850px';
+    dialogConfig.width = '600px';
     const dialogRef = this.dialog.open(TaskDialogComponent, dialogConfig);
     this.router.events.subscribe(() => {
       dialogRef.close();
     });
-    const sub = dialogRef.componentInstance.onAddTask.subscribe((resp) => {
+    dialogRef.componentInstance.onAddTask.subscribe(() => {
       this.getCurrentTasks();
+      alert('Les modifications sont bien enregistrées!!')
     });
   }
 
+  handleEditAction(values: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: 'update',
+      data: values
+    };
+    dialogConfig.width = '600px';
+    const dialogRef = this.dialog.open(TaskDialogComponent, dialogConfig);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    dialogRef.componentInstance.onEditTask.subscribe(() => {
+      this.getCurrentTasks();
+      alert('Les modifications sont bien enregistrées!!');
+    });
+  }
+
+  handleDeleteAction(taskId: number) {
+    this.taskService.deleteTask(taskId).subscribe(() => {
+      this.getCurrentTasks()
+    }, (err) => {
+      console.log(err)
+    })
+  }
 }

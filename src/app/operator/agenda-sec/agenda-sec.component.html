@@ -1,0 +1,65 @@
+<div class="p-3 w-50">
+  <app-resp-choice (responsibleChange)="getAgendaByResoinsible($event)"></app-resp-choice>
+</div>
+<div *ngIf="agenda">
+  <div class="struct p-3 bg-white rad-10 m-3">
+    <div class="row">
+      <div class="search mb-3 col-md-8">
+        <input type="date" [(ngModel)]="date"/>
+        <button class="btn btn-primary" type="submit" (click)="handleSearch()">
+          rechercher
+        </button>
+      </div>
+      <div class="mb-3 col-md-4">
+        <a
+          (click)="handleAddAction()"
+          class="btn btn-primary"
+          aria-current="page"
+        >Ajouter</a
+        >
+      </div>
+    </div>
+    <div class="responsive-table">
+      <table>
+        <thead>
+        <tr>
+          <td>Objet</td>
+          <td>Date</td>
+          <td>Heure</td>
+          <td>Observation</td>
+          <td>Etat</td>
+          <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ag of agenda | orderByDate : 'date':'desc' | paginate : {itemsPerPage: 15, currentPage: p}">
+          <td>{{ag.object}}</td>
+          <td>{{ag.date | date: 'longDate'}}</td>
+          <td>{{ag.hour}}</td>
+          <td>{{ag.observation}}</td>
+          <td>{{ag.state}}</td>
+          <td class="text-center">
+                    <span class="label bg-orange me-2"
+                    ><a
+                      (click)="handleEditAction(ag)"
+                      class="c-white"
+                      title="modifier"
+                    ><i class="fa-solid fa-pen fa-fw"></i></a
+                    ></span>
+            <span class="label bg-red me-2"
+            ><a
+              (click)="handleDeleteAction(ag.id)"
+              class="c-white"
+              title="supprimer"
+              onclick="return confirm('Etes vous sure ?')"
+            ><i class="fa-solid fa-trash fa-fw"></i></a
+            ></span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div style="margin: 6px 0"></div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

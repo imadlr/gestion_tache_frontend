@@ -1,4 +1,4 @@
-<h1 class="position-relative ms-3 mt-2 mb-4">Tâches en cours</h1>
+<h1 class="position-relative ms-3 mt-2 mb-4">Tâches en retard</h1>
 <div class="struct p-3 bg-white rad-10 m-3">
   <div class="row">
     <div class="search position-relative mb-3 col-md-9">
@@ -6,12 +6,6 @@
       <button class="btn btn-primary" type="submit" (click)="handleSearch()">
         rechercher
       </button>
-    </div>
-    <div class="mb-3 col-md-3">
-      <a class="btn btn-primary" aria-current="page"
-         (click)="handleAddAction()"
-      >Ajouter une tâche</a
-      >
     </div>
   </div>
 
@@ -25,7 +19,6 @@
         <td>Fin</td>
         <td>Description</td>
         <td>Etat</td>
-        <td></td>
       </tr>
       </thead>
       <tbody>
@@ -36,25 +29,6 @@
         <td>{{task.endDate | date : 'longDate'}}</td>
         <td>{{task.description}}</td>
         <td class="fw-bold c-orange">{{task.state}}</td>
-        <td class="text-center">
-                    <span class="label bg-orange me-2">
-                      <a
-                        class="c-white"
-                        title="modifier"
-                        (click)="handleEditAction(task)">
-                      <i class="fa-solid fa-pen fa-fw"></i>
-                    </a>
-                    </span>
-          <span class="label bg-red me-2">
-            <a
-              (click)="handleDeleteAction(task.id)"
-              class="c-white"
-              title="supprimer"
-              onclick="return confirm('Etes vous sure ?')">
-              <i class="fa-solid fa-trash fa-fw"></i>
-            </a>
-          </span>
-        </td>
       </tr>
       </tbody>
     </table>

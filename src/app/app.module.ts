@@ -27,6 +27,11 @@ import { TaskDialogComponent } from './operator/dialog/task-dialog/task-dialog.c
 import {MaterialModule} from "./material/material.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { CompletedTasksSecComponent } from './operator/completed-tasks-sec/completed-tasks-sec.component';
+import { LateTasksSecComponent } from './operator/late-tasks-sec/late-tasks-sec.component';
+import { AgendaSecComponent } from './operator/agenda-sec/agenda-sec.component';
+import { RespChoiceComponent } from './operator/dialog/resp-choice/resp-choice.component';
+import { AgendaDialogComponent } from './operator/dialog/agenda-dialog/agenda-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     LateTasksRespComponent,
     OperatorComponent,
     CurrentTasksSecComponent,
-    TaskDialogComponent
+    TaskDialogComponent,
+    CompletedTasksSecComponent,
+    LateTasksSecComponent,
+    AgendaSecComponent,
+    RespChoiceComponent,
+    AgendaDialogComponent
   ],
   imports: [
     BrowserModule,

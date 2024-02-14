@@ -11,7 +11,6 @@ import {SharedService} from "../services/shared.service";
 export class OperatorComponent implements OnInit {
 
   secretary!: SecretaryDTO;
-  showHome: boolean = true;
   showCurrentTasks: boolean = false;
   showCompletedTasks: boolean = false;
   showLateTasks: boolean = false;
@@ -36,17 +35,7 @@ export class OperatorComponent implements OnInit {
     })
   }
 
-  onShowHome() {
-    this.showHome = true;
-    this.showCurrentTasks = false;
-    this.showCompletedTasks = false;
-    this.showLateTasks = false;
-    this.showAgenda = false;
-    this.saveToStorage();
-  }
-
   onShowLateTasks() {
-    this.showHome = false;
     this.showCurrentTasks = false;
     this.showCompletedTasks = false;
     this.showLateTasks = true;
@@ -55,7 +44,6 @@ export class OperatorComponent implements OnInit {
   }
 
   onShowCompletedTasks() {
-    this.showHome = false;
     this.showCurrentTasks = false;
     this.showCompletedTasks = true;
     this.showLateTasks = false;
@@ -64,7 +52,6 @@ export class OperatorComponent implements OnInit {
   }
 
   onShowCurrentTasks() {
-    this.showHome = false;
     this.showCurrentTasks = true;
     this.showCompletedTasks = false;
     this.showLateTasks = false;
@@ -73,7 +60,6 @@ export class OperatorComponent implements OnInit {
   }
 
   onShowAgenda() {
-    this.showHome = false;
     this.showCurrentTasks = false;
     this.showCompletedTasks = false;
     this.showLateTasks = false;
@@ -86,7 +72,6 @@ export class OperatorComponent implements OnInit {
   }
 
   private saveToStorage() {
-    localStorage.setItem('home', this.showHome.toString())
     localStorage.setItem('current', this.showCurrentTasks.toString())
     localStorage.setItem('completed', this.showCompletedTasks.toString())
     localStorage.setItem('late', this.showLateTasks.toString())
@@ -94,7 +79,6 @@ export class OperatorComponent implements OnInit {
   }
 
   private loadFromStorage() {
-    this.showHome = this.stringToBoolean(this.sharedService.loadFromStorage('home'));
     this.showCurrentTasks = this.stringToBoolean(this.sharedService.loadFromStorage('current'));
     this.showCompletedTasks = this.stringToBoolean(this.sharedService.loadFromStorage('completed'));
     this.showLateTasks = this.stringToBoolean(this.sharedService.loadFromStorage('late'));

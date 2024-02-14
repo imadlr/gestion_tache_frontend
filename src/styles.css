@@ -12,7 +12,6 @@
   --main-transition: 0.3s;
 }
 
-/* start color */
 .bg-section {
   background-color: var(--section-color);
 }
@@ -85,8 +84,6 @@ a {
   cursor: pointer;
 }
 
-/* end color */
-/* start border */
 .b-none {
   border: none;
 }
@@ -103,8 +100,7 @@ a {
   border-radius: 50%;
 }
 
-/* end border */
-/* start media */
+
 @media (max-width: 767px) {
   .hide-mobile {
     display: none;
@@ -119,8 +115,6 @@ a {
   }
 }
 
-/* end media */
-/* start navbar */
 .navbar {
   background-color: #fff;
 }
@@ -150,11 +144,6 @@ a {
   border-color: var(--green-color);
 }
 
-/* end navbar */
-body {
-  font-family: "Open Sans", sans-serif;
-}
-
 *:focus {
   outline: none;
 }
@@ -168,7 +157,6 @@ ul {
   list-style: none;
 }
 
-/* start sidebar */
 .sidebar {
   width: 250px;
   box-shadow: 0 0 10px #ddd;
@@ -230,13 +218,10 @@ ul {
   }
 }
 
-/* end sidebar */
-/* start content */
-.content {
-  overflow: hidden;
+.page {
+  min-height: 100vh;
 }
 
-/* end login page */
 .page h1::before,
 .page h1::after {
   content: "";
@@ -272,8 +257,6 @@ ul {
   }
 }
 
-/* end content */
-/* start table */
 .struct .responsive-table {
   overflow-x: auto;
 }
@@ -315,15 +298,6 @@ ul {
   background-color: #faf7f7;
 }
 
-.struct table tbody td img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-}
-
-/* end table */
-/* start new task */
 .new-task {
   min-height: 100vh;
   background: #c0c0c0;
@@ -333,14 +307,16 @@ ul {
   font-size: 14px;
 }
 
+.content {
+  overflow: hidden;
+}
+
 @media (max-width: 576px) {
   .new-task .content {
     width: 90% !important;
   }
 }
 
-/* end new task */
-/* start search */
 @media (max-width: 442px) {
   .search input {
     margin-bottom: 5px;
@@ -364,15 +340,11 @@ ul {
   opacity: 0;
 }
 
-/* end search */
-/* start active page */
 .pageActive {
   background-color: var(--grey-color);
   color: white;
 }
 
-/* end active page */
-/* start tickets */
 .statistics .box {
   border: 1px solid #ccc;
   width: calc(50% - 10px);
@@ -384,15 +356,10 @@ ul {
   }
 }
 
-/* end tickets */
 .error {
   color: red;
   font-size: 13px;
 }
 
-html, body { height: 100%; }
+html, body { min-height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.spacer {
-  flex: 1 auto;
-}

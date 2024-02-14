@@ -1,58 +1,68 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row fxLayout="row">
-    <span>{{dialogData.action}} Product</span>
-    <span class="spacer"></span>
-    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+<div
+  class="content p-3 rounded-3"
+  style="background-color: #eee"
+>
+  <div class="text-end">
+    <button class="mat-dialog-close" color="warn" mat-icon-button mat-dialog-close>
       <mat-icon>close</mat-icon>
     </button>
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<mat-dialog-content class="mat-typography">
-  <form [formGroup] = "taskForm">
-    <div fxFlex fxLayout="column">
-      <div fxLayout="row wrap">
-        <mat-form-field fxFlex>
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="" required>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="row wrap">
-        <mat-form-field fxFlex>
-          <mat-label>Price</mat-label>
-          <input matInput formControlName="price" required>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="row wrap">
-        <mat-form-field fxFlex>
-          <mat-label>Category</mat-label>
-
-          <mat-select formControlName="categoryId">
-            <mat-option *ngFor="let division of divisions" [value]="division.id">
-              {{division.nameDivision}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="row wrap">
-        <mat-form-field fxFlex>
-          <mat-label>Description</mat-label>
-          <input matInput formControlName="description" required>
-        </mat-form-field>
-      </div>
-
+  </div>
+  <h3 class="text-center mb-2">{{dialogAction}} une tâche</h3>
+  <div class="container">
+  <form class="row gx-5" method="post" [formGroup]="taskForm">
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Nom</label>
+      <input
+        formControlName="object"
+        type="text"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Division</label>
+      <select style="height: 35px" class="w-100" formControlName="divisionId">
+        <option *ngFor="let division of divisions" value="{{division.id}}">
+          {{division.nameDivision}}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Début</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="startDate"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Fin</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="endDate"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >Etat</label
+      >
+      <select style="height: 35px" class="w-100" formControlName="state">
+        <option *ngFor="let value of Object.values(TaskState)" [value]="value">{{ value }}</option>
+      </select>
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >Description</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="description"
+      />
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="handleSubmit()">Enregistrer</button>
     </div>
   </form>
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()">
-    <mat-icon>save</mat-icon>
-  </button>
-  <button mat-raised-button color="warn" mat-dialog-close>
-    <mat-icon>cancel</mat-icon> Close
-  </button>
-</mat-dialog-actions>
+</div>
+</div>

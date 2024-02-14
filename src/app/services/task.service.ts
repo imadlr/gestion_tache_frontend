@@ -75,4 +75,8 @@ export class TaskService {
     return this.http.put(this.url+"/sec/updateTask",task)
   }
 
+  deleteTask(taskId:number) {
+    return this.http.delete(this.url+"/sec/deleteTask/"+taskId)
+  }
+
 }
