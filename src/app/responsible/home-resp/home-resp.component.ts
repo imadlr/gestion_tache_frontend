@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ResponsibleDTO} from "../../models/responsible";
 import {CountTaskByStateDTO} from "../../models/taskByState";
 import {TaskService} from "../../services/task.service";
-import {TaskState} from "../../models/task";
 
 @Component({
   selector: 'app-home-resp',

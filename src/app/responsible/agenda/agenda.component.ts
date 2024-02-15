@@ -5,7 +5,6 @@ import {format} from "date-fns";
 import {AgendaDTO} from "../../models/agenda";
 import {fr} from "date-fns/locale";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {state} from "@angular/animations";
 
 @Component({
   selector: 'app-agenda',
@@ -58,10 +57,10 @@ export class AgendaComponent implements OnInit {
       })
   }
 
-  finishAgenda(agendaId:number) {
-    this.agendaService.finishedAgenda(agendaId).subscribe(()=>{
+  finishAgenda(agendaId: number) {
+    this.agendaService.finishedAgenda(agendaId).subscribe(() => {
       this.getAgendaByDay();
-    },(err)=> {
+    }, (err) => {
       console.log(err)
     });
 

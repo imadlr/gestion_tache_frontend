@@ -7,7 +7,7 @@ import {TaskService} from "../../services/task.service";
   templateUrl: './completed-tasks.component.html',
   styleUrls: ['./completed-tasks.component.css']
 })
-export class CompletedTasksComponent implements OnInit{
+export class CompletedTasksComponent implements OnInit {
 
   tasks!: TaskDTO[];
   @Input()
@@ -23,10 +23,10 @@ export class CompletedTasksComponent implements OnInit{
   }
 
   getCompletedTasks() {
-    this.taskService.getCompletedTasksByDivision(this.divisionId,this.keyword).subscribe(
-      (data:any)=> {
+    this.taskService.getCompletedTasksByDivision(this.divisionId, this.keyword).subscribe(
+      (data: any) => {
         this.tasks = data
-      },(err) => {
+      }, (err) => {
         console.log(err)
       }
     )

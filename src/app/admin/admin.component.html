@@ -5,7 +5,7 @@
       <li>
         <a
           class="d-flex align-items-center fs-5 p-2 mb-2"
-          [class.active] = "showDivisions"
+          [class.active]="showDivisions"
           (click)="onShowDivisions()"
           title="Divisions"
         ><i class="fa-solid fa-users fa-fw"></i>
@@ -15,7 +15,7 @@
       <li>
         <a
           class="d-flex align-items-center fs-5 p-2 mb-2"
-          [class.active] = "showResponsibles"
+          [class.active]="showResponsibles"
           (click)="onShowResponsibles()"
           title="Responsables"
         >
@@ -26,7 +26,7 @@
       <li>
         <a
           class="d-flex align-items-center fs-5 p-2 mb-2"
-          [class.active] = "showSecretaries"
+          [class.active]="showSecretaries"
           (click)="onShowSecretaries()"
           title="Opérateurs"
         >

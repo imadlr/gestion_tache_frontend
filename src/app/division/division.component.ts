@@ -70,15 +70,16 @@ export class DivisionComponent implements OnInit {
   }
 
   handleLogout() {
+    this.removeFromStorage();
     this.authService.logout();
   }
 
 
   private saveToStorage() {
-    localStorage.setItem('home', this.showHome.toString())
-    localStorage.setItem('current', this.showCurrentTasks.toString())
-    localStorage.setItem('completed', this.showCompletedTasks.toString())
-    localStorage.setItem('late', this.showLateTasks.toString())
+    this.sharedService.saveToStorage('home', this.showHome);
+    this.sharedService.saveToStorage('current', this.showCurrentTasks);
+    this.sharedService.saveToStorage('completed', this.showCompletedTasks);
+    this.sharedService.saveToStorage('late', this.showLateTasks);
   }
 
   private loadFromStorage() {
@@ -86,6 +87,13 @@ export class DivisionComponent implements OnInit {
     this.showCurrentTasks = this.stringToBoolean(this.sharedService.loadFromStorage('current'));
     this.showCompletedTasks = this.stringToBoolean(this.sharedService.loadFromStorage('completed'));
     this.showLateTasks = this.stringToBoolean(this.sharedService.loadFromStorage('late'));
+  }
+
+  private removeFromStorage() {
+    this.sharedService.removeFromStorage('current');
+    this.sharedService.removeFromStorage('completed');
+    this.sharedService.removeFromStorage('late');
+    this.sharedService.removeFromStorage('home');
   }
 
   private stringToBoolean(value: string): any {

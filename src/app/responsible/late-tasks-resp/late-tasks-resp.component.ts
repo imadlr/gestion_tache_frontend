@@ -7,7 +7,7 @@ import {TaskService} from "../../services/task.service";
   templateUrl: './late-tasks-resp.component.html',
   styleUrls: ['./late-tasks-resp.component.css']
 })
-export class LateTasksRespComponent implements OnInit{
+export class LateTasksRespComponent implements OnInit {
 
   tasks: TaskDTO[] = [];
   keyword: string = ''

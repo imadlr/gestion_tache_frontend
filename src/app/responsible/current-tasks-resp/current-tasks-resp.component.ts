@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskDTO} from "../../models/task";
 import {TaskService} from "../../services/task.service";
-import {take} from "rxjs";
 
 @Component({
   selector: 'app-current-tasks-resp',

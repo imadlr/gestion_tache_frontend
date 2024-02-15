@@ -83,15 +83,16 @@ export class ResponsibleComponent implements OnInit {
   }
 
   handleLogout() {
+    this.removeFromStorage();
     this.authService.logout();
   }
 
   private saveToStorage() {
-    localStorage.setItem('home', this.showHome.toString())
-    localStorage.setItem('current', this.showCurrentTasks.toString())
-    localStorage.setItem('completed', this.showCompletedTasks.toString())
-    localStorage.setItem('late', this.showLateTasks.toString())
-    localStorage.setItem('agenda', this.showAgenda.toString())
+    this.sharedService.saveToStorage('home', this.showHome);
+    this.sharedService.saveToStorage('current', this.showCurrentTasks);
+    this.sharedService.saveToStorage('completed', this.showCompletedTasks);
+    this.sharedService.saveToStorage('late', this.showLateTasks);
+    this.sharedService.saveToStorage('agenda', this.showAgenda);
   }
 
   private loadFromStorage() {
@@ -109,6 +110,14 @@ export class ResponsibleComponent implements OnInit {
       case 'false':
         return false;
     }
+  }
+
+  private removeFromStorage() {
+    this.sharedService.removeFromStorage('home');
+    this.sharedService.removeFromStorage('current');
+    this.sharedService.removeFromStorage('completed');
+    this.sharedService.removeFromStorage('late');
+    this.sharedService.removeFromStorage('agenda');
   }
 
 }

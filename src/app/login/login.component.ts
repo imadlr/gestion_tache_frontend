@@ -38,16 +38,16 @@ export class LoginComponent implements OnInit {
   }
 
   navigateTo() {
-    if(this.authService.role === 'DIVISION') {
+    if (this.authService.role === 'DIVISION') {
       this.router.navigate(['/division'])
     }
-    if(this.authService.role === 'RESPONSIBLE') {
+    if (this.authService.role === 'RESPONSIBLE') {
       this.router.navigate(['/responsible'])
     }
-    if(this.authService.role === 'SECRETARY') {
+    if (this.authService.role === 'SECRETARY') {
       this.router.navigate(['/sec'])
     }
-    if(this.authService.role === 'ADMIN') {
+    if (this.authService.role === 'ADMIN') {
       this.router.navigate(['/admin'])
     }
   }

@@ -11,7 +11,7 @@ import {SharedService} from "../services/shared.service";
 export class OperatorComponent implements OnInit {
 
   secretary!: SecretaryDTO;
-  showCurrentTasks: boolean = false;
+  showCurrentTasks: boolean = true;
   showCompletedTasks: boolean = false;
   showLateTasks: boolean = false;
   showAgenda: boolean = false;
@@ -21,7 +21,7 @@ export class OperatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.sharedService.loadFromStorage('home') != null) {
+    if (this.sharedService.loadFromStorage('current') != null) {
       this.loadFromStorage()
     }
     this.loadSecretary();
@@ -68,14 +68,15 @@ export class OperatorComponent implements OnInit {
   }
 
   handleLogout() {
+    this.removeFromStorage();
     this.authService.logout();
   }
 
   private saveToStorage() {
-    localStorage.setItem('current', this.showCurrentTasks.toString())
-    localStorage.setItem('completed', this.showCompletedTasks.toString())
-    localStorage.setItem('late', this.showLateTasks.toString())
-    localStorage.setItem('agenda', this.showAgenda.toString())
+    this.sharedService.saveToStorage('current', this.showCurrentTasks);
+    this.sharedService.saveToStorage('completed', this.showCompletedTasks);
+    this.sharedService.saveToStorage('late', this.showLateTasks);
+    this.sharedService.saveToStorage('agenda', this.showAgenda);
   }
 
   private loadFromStorage() {
@@ -83,6 +84,13 @@ export class OperatorComponent implements OnInit {
     this.showCompletedTasks = this.stringToBoolean(this.sharedService.loadFromStorage('completed'));
     this.showLateTasks = this.stringToBoolean(this.sharedService.loadFromStorage('late'));
     this.showAgenda = this.stringToBoolean(this.sharedService.loadFromStorage('agenda'));
+  }
+
+  private removeFromStorage() {
+    this.sharedService.removeFromStorage('current');
+    this.sharedService.removeFromStorage('completed');
+    this.sharedService.removeFromStorage('late');
+    this.sharedService.removeFromStorage('agenda');
   }
 
   private stringToBoolean(value: string): any {

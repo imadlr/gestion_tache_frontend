@@ -41,7 +41,7 @@ export class TaskService {
 
   getCurrentTasks(keyword: string) {
     const role = localStorage.getItem('role')
-    if (role == 'DIVISION') {
+    if (role == 'RESPONSIBLE') {
       return this.http.get(this.url + "/resp/currentTasks?keyword=" + keyword);
     } else {
       return this.http.get(this.url + "/sec/currentTasks?keyword=" + keyword);
@@ -50,7 +50,7 @@ export class TaskService {
 
   getCompletedTasks(keyword: string) {
     const role = localStorage.getItem('role')
-    if (role == 'DIVISION') {
+    if (role == 'RESPONSIBLE') {
       return this.http.get(this.url + "/resp/completedTasks?keyword=" + keyword);
     } else {
       return this.http.get(this.url + "/sec/completedTasks?keyword=" + keyword);
@@ -60,23 +60,23 @@ export class TaskService {
 
   getLateTasks(keyword: string) {
     const role = localStorage.getItem('role')
-    if (role == 'DIVISION') {
+    if (role == 'RESPONSIBLE') {
       return this.http.get(this.url + "/resp/lateTasks?keyword=" + keyword);
     } else {
       return this.http.get(this.url + "/sec/lateTasks?keyword=" + keyword);
     }
   }
 
-  saveTask(task : TaskDTO) {
-    return this.http.post(this.url+"/sec/saveTask",task)
+  saveTask(task: TaskDTO) {
+    return this.http.post(this.url + "/sec/saveTask", task)
   }
 
-  updateTask(task : TaskDTO) {
-    return this.http.put(this.url+"/sec/updateTask",task)
+  updateTask(task: TaskDTO) {
+    return this.http.put(this.url + "/sec/updateTask", task)
   }
 
-  deleteTask(taskId:number) {
-    return this.http.delete(this.url+"/sec/deleteTask/"+taskId)
+  deleteTask(taskId: number) {
+    return this.http.delete(this.url + "/sec/deleteTask/" + taskId)
   }
 
 }

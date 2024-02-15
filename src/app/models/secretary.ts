@@ -1,7 +1,7 @@
 import {UserAccountDTO} from "./user-account";
 
 export interface SecretaryDTO {
-  id: number ;
+  id: number;
   firstName: string;
   lastName: string;
   cni: string;

@@ -21,15 +21,15 @@ export class DivisionService {
   }
 
   saveDivision(division: DivisionDTO) {
-    return this.http.post(this.url + "/admin/saveDivision",division)
+    return this.http.post(this.url + "/admin/saveDivision", division)
   }
 
   updateDivision(division: DivisionDTO) {
-    return this.http.put(this.url + "/admin/updateDivision",division)
+    return this.http.put(this.url + "/admin/updateDivision", division)
   }
 
   deleteDivision(divisionId: number) {
-    return this.http.delete(this.url + "/admin/deleteDivision/"+divisionId)
+    return this.http.delete(this.url + "/admin/deleteDivision/" + divisionId)
   }
 
 }

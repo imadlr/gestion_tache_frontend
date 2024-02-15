@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ResponsibleDTO} from "../models/responsible";
 import {HttpClient} from "@angular/common/http";
 import {SecretaryDTO} from "../models/secretary";
 

@@ -16,7 +16,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private sharedService:SharedService) {
+              private sharedService: SharedService) {
   }
 
   public login(data: any) {
@@ -51,7 +51,7 @@ export class AuthenticationService {
       return this.http.get(this.url + "/resp/getByUsername?username=" + this.username);
     } else if (this.role === 'ADMIN') {
       return this.http.get(this.url + "/admin/getByUsername?username=" + this.username);
-    } else if  (this.role === 'SECRETARY') {
+    } else if (this.role === 'SECRETARY') {
       return this.http.get(this.url + "/sec/getByUsername?username=" + this.username);
     } else {
       return null;
@@ -74,24 +74,19 @@ export class AuthenticationService {
   }
 
   private saveToStorage() {
-    this.sharedService.saveToStorage('username',this.username)
-    this.sharedService.saveToStorage('role',this.role)
+    this.sharedService.saveToStorage('username', this.username)
+    this.sharedService.saveToStorage('role', this.role)
   }
 
   private loadFromStorage() {
-      this.username = this.sharedService.loadFromStorage('username');
-      this.role = this.sharedService.loadFromStorage('role');
+    this.username = this.sharedService.loadFromStorage('username');
+    this.role = this.sharedService.loadFromStorage('role');
   }
 
   private removeFromStorage() {
     this.sharedService.removeFromStorage('token');
     this.sharedService.removeFromStorage('username');
     this.sharedService.removeFromStorage('role');
-    this.sharedService.removeFromStorage('home');
-    this.sharedService.removeFromStorage('current');
-    this.sharedService.removeFromStorage('completed');
-    this.sharedService.removeFromStorage('late');
-    this.sharedService.removeFromStorage('agenda');
   }
 
 }

@@ -57,8 +57,8 @@ export class AdminComponent implements OnInit {
   }
 
   handleLogout() {
-    this.authService.logout();
     this.removeFromStorage();
+    this.authService.logout();
   }
 
   saveToStorage() {

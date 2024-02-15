@@ -11,7 +11,7 @@ export class CompletedTasksSecComponent implements OnInit {
 
   tasks: TaskDTO[] = [];
   keyword: string = ''
-  p : number = 1
+  p: number = 1
 
   constructor(private taskService: TaskService) {
   }
@@ -21,9 +21,9 @@ export class CompletedTasksSecComponent implements OnInit {
   }
 
   getCompletedTasks() {
-    this.taskService.getCompletedTasks(this.keyword).subscribe((data:any)=>{
+    this.taskService.getCompletedTasks(this.keyword).subscribe((data: any) => {
       this.tasks = data
-    },(err)=>{
+    }, (err) => {
       console.log(err)
     })
   }

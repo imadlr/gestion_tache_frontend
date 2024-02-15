@@ -6,15 +6,9 @@ import {DivisionDTO} from "../../models/division";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   @Input()
   division!: DivisionDTO;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }
