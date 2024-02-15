@@ -1,0 +1,64 @@
+<h1 class="position-relative ms-3 mt-2 mb-4">Les divisions</h1>
+<div class="struct p-3 bg-white rad-10 m-3">
+  <div class="row">
+    <div class="search position-relative mb-3 col-md-9">
+      <input
+        type="text"
+        name="mc"
+        placeholder="recherche par cni"
+        [(ngModel)]="keyword"
+      />
+      <button class="btn btn-primary" type="submit" (click)="handleSearch()">
+        rechercher
+      </button>
+    </div>
+    <div class="mb-3 col-md-3">
+      <a class="btn btn-primary" aria-current="page"
+         (click)="handleAddAction()"
+      >Ajouter une division</a
+      >
+    </div>
+  </div>
+
+  <div class="responsive-table">
+    <table>
+      <thead>
+      <tr>
+        <td>Nom & Prénom</td>
+        <td>Division</td>
+        <td>CNI</td>
+        <td>Nom d'utilisateur</td>
+        <td>Mot de passe</td>
+        <td></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let division of divisions | paginate : {itemsPerPage: 15, currentPage: p}">
+        <td>{{division.lastName + " " + division.firstName}}</td>
+        <td>{{division.nameDivision}}</td>
+        <td>{{division.cni}}</td>
+        <td>{{division.userAccountDTO.username}}</td>
+        <td>{{division.userAccountDTO.password}}</td>
+        <td class="text-center">
+                    <span class="label bg-red me-2"
+                    ><a
+                      class="c-white"
+                      title="supprimer"
+                      onclick="return confirm('Etes vous sure ?')"
+                      (click)="handleDeleteAction(division.id)"
+                    ><i class="fa-solid fa-trash fa-fw"></i></a></span
+                    ><span class="label bg-orange me-2"
+        ><a
+          class="c-white"
+          title="modifier"
+          (click)="handleEditAction(division)"
+        ><i class="fa-solid fa-pen fa-fw"></i></a
+        ></span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div style="margin: 10px 0"></div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

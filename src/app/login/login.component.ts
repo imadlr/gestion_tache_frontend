@@ -47,6 +47,9 @@ export class LoginComponent implements OnInit {
     if(this.authService.role === 'SECRETARY') {
       this.router.navigate(['/sec'])
     }
+    if(this.authService.role === 'ADMIN') {
+      this.router.navigate(['/admin'])
+    }
   }
 
 }

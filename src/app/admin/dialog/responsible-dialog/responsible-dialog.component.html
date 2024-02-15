@@ -1,0 +1,64 @@
+<div
+  class="content p-3 rounded-3 "
+  style="background-color: #eee"
+>
+  <div class="text-end">
+    <button class="mat-dialog-close" color="warn" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <h3 class="text-center mb-2">{{dialogAction}} un responsable</h3>
+  <form method="post" class="row gx-5" [formGroup]="responsibleForm">
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >Nom</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="firstName"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >Prénom</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="lastName"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >CNI</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="cni"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label">Nom d'utilisateur</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="username"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label class="form-label"
+      >Mot de passe</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="password"
+      />
+    </div>
+
+    <div><button class="btn btn-primary" (click)="handleSubmit()">Enregistrer</button></div>
+  </form>
+</div>

@@ -32,6 +32,13 @@ import { LateTasksSecComponent } from './operator/late-tasks-sec/late-tasks-sec.
 import { AgendaSecComponent } from './operator/agenda-sec/agenda-sec.component';
 import { RespChoiceComponent } from './operator/dialog/resp-choice/resp-choice.component';
 import { AgendaDialogComponent } from './operator/dialog/agenda-dialog/agenda-dialog.component';
+import { AdminComponent } from './admin/admin.component';
+import { DivisionsComponent } from './admin/divisions/divisions.component';
+import { ResponsiblesComponent } from './admin/responsibles/responsibles.component';
+import { SecretariesComponent } from './admin/secretaries/secretaries.component';
+import { DivisionDialogComponent } from './admin/dialog/division-dialog/division-dialog.component';
+import { ResponsibleDialogComponent } from './admin/dialog/responsible-dialog/responsible-dialog.component';
+import { SecretaryDialogComponent } from './admin/dialog/secretary-dialog/secretary-dialog.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +63,14 @@ import { AgendaDialogComponent } from './operator/dialog/agenda-dialog/agenda-di
     LateTasksSecComponent,
     AgendaSecComponent,
     RespChoiceComponent,
-    AgendaDialogComponent
+    AgendaDialogComponent,
+    AdminComponent,
+    DivisionsComponent,
+    ResponsiblesComponent,
+    SecretariesComponent,
+    DivisionDialogComponent,
+    ResponsibleDialogComponent,
+    SecretaryDialogComponent
   ],
   imports: [
     BrowserModule,
